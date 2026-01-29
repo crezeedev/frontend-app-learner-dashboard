@@ -1,31 +1,32 @@
 import { defineMessages } from '@edx/frontend-platform/i18n';
 
 const messages = defineMessages({
-  upgrade: {
-    id: 'learner-dash.courseCard.actions.upgrade',
-    description: 'Course card upgrade button text',
-    defaultMessage: 'Upgrade',
-  },
-  beginCourse: {
-    id: 'learner-dash.courseCard.actions.beginCourse',
-    description: 'Course card begin-course button text',
-    defaultMessage: 'Begin Course',
-  },
-  resume: {
-    id: 'learner-dash.courseCard.actions.resume',
-    description: 'Course card resume button text',
-    defaultMessage: 'Resume',
-  },
-  viewCourse: {
-    id: 'learner-dash.courseCard.actions.viewCourse',
-    description: 'Course card view-course button text',
-    defaultMessage: 'View Course',
-  },
-  selectSession: {
-    id: 'learner-dash.courseCard.actions.selectSession',
-    description: 'Course card select-session button text',
-    defaultMessage: 'Select Session',
-  },
+upgrade: {
+  id: 'learner-dash.courseCard.actions.upgrade',
+  description: 'Texto del botón para mejorar la modalidad del curso en la tarjeta',
+  defaultMessage: 'Mejorar',
+},
+beginCourse: {
+  id: 'learner-dash.courseCard.actions.beginCourse',
+  description: 'Texto del botón para iniciar el curso en la tarjeta',
+  defaultMessage: 'Iniciar curso',
+},
+resume: {
+  id: 'learner-dash.courseCard.actions.resume',
+  description: 'Texto del botón para reanudar el curso en la tarjeta',
+  defaultMessage: 'Reanudar',
+},
+viewCourse: {
+  id: 'learner-dash.courseCard.actions.viewCourse',
+  description: 'Texto del botón para ver el curso en la tarjeta',
+  defaultMessage: 'Ver curso',
+},
+selectSession: {
+  id: 'learner-dash.courseCard.actions.selectSession',
+  description: 'Texto del botón para seleccionar una sesión en la tarjeta del curso',
+  defaultMessage: 'Seleccionar sesión',
+},
+
 });
 
 export default messages;

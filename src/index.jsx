@@ -1,9 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-
+import './custom/PopupOnDashboard.jsx';//modal de aviso
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PopupOnDashboard from './custom/PopupOnDashboard.jsx';
 import {
   Route, Navigate, Routes,
 } from 'react-router-dom';
@@ -30,9 +31,11 @@ import App from './App';
 import NoticesWrapper from './components/NoticesWrapper';
 
 subscribe(APP_READY, () => {
+console.log("index.jsx: APP_READY → renderizando aplicación");
   ReactDOM.render(
     <AppProvider store={store}>
       <NoticesWrapper>
+	<PopupOnDashboard />
         <Routes>
           <Route path="/" element={<PageWrap><App /></PageWrap>} />
           <Route path="*" element={<Navigate to="/" replace />} />

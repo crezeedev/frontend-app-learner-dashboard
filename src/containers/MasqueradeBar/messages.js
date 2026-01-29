@@ -3,34 +3,35 @@ import { defineMessages } from '@edx/frontend-platform/i18n';
 const messages = defineMessages({
   ViewAs: {
     id: 'MasqueradeBar.ViewAs',
-    defaultMessage: 'View as: ',
-    description: 'Label for the View as',
+    defaultMessage: 'Ver como: ',
+    description: 'Etiqueta para "Ver como"',
   },
   ViewingAs: {
     id: 'MasqueradeBar.ViewingAs',
-    defaultMessage: 'Viewing as: ',
-    description: 'Label for the Viewing as',
+    defaultMessage: 'Viendo como: ',
+    description: 'Etiqueta para "Viendo como"',
   },
   SubmitButton: {
     id: 'MasqueradeBar.SubmitButton',
-    defaultMessage: 'Submit',
-    description: 'Label for the Submit button',
+    defaultMessage: 'Enviar',
+    description: 'Etiqueta para el botón Enviar',
   },
   StudentNameInput: {
     id: 'MasqueradeBar.StudentNameInput',
-    defaultMessage: 'Username or email',
-    description: 'Label for the Student Name or email input',
+    defaultMessage: 'Nombre de usuario o correo electrónico',
+    description: 'Etiqueta para el campo de nombre de usuario o correo electrónico',
   },
   NoStudentFound: {
     id: 'MasqueradeBar.NoStudentFound',
-    defaultMessage: 'No student with this username or email could be found',
-    description: 'Error message when no student is found',
+    defaultMessage: 'No se encontró ningún estudiante con ese nombre de usuario o correo electrónico',
+    description: 'Mensaje de error cuando no se encuentra un estudiante',
   },
   UnknownError: {
     id: 'MasqueradeBar.UnknownError',
-    defaultMessage: 'An unknown error occurred',
-    description: 'Error message when an unknown error occurs',
+    defaultMessage: 'Ocurrió un error desconocido',
+    description: 'Mensaje de error cuando ocurre un error desconocido',
   },
+
 });
 
 export default messages;

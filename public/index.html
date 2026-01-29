@@ -7,4 +7,37 @@
   <body>
     <div id="root"></div>
   </body>
+
+	
+<script>
+(function () {
+  function translateAndClean() {
+
+    // 2. Traducir Copyrights con una técnica de reemplazo total
+    const copyright = document.querySelector('.copyright-site');
+    if (copyright && copyright.textContent.includes('All Rights Reserved')) {
+      // Usamos innerHTML para forzar el cambio y reemplazamos las dos partes
+      let text = copyright.innerHTML;
+      text = text.replace('Copyrights', 'Derechos de autor');
+      text = text.replace('All Rights Reserved', 'Todos los derechos reservados');
+      copyright.innerHTML = text;
+    }
+  }
+
+  // Ejecución inicial con un pequeño retraso para asegurar que el footer cargó
+  setTimeout(translateAndClean, 500);
+
+  // Observador para cambios del DOM
+  const observer = new MutationObserver((mutations) => {
+    // Solo ejecutamos si hay cambios reales para evitar bucles infinitos
+    translateAndClean();
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+})();
+</script>
+
 </html>

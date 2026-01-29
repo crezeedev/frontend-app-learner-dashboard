@@ -28,6 +28,10 @@
   "publishConfig": {
     "access": "public"
   },
+"fedx-scripts": {
+  "extraWebpackConfig": "./src/module.config.js"
+},
+
   "dependencies": {
     "@edx/brand": "npm:@openedx/brand-openedx@^1.2.2",
     "@edx/frontend-component-header": "^5.6.0",

@@ -22,14 +22,26 @@ const getLearnerHeaderMenu = (
       href: `${urls.programsUrl()}`,
       content: formatMessage(messages.program),
     }] : []),
-    {
-      type: 'item',
-      href: `${urls.baseAppUrl(courseSearchUrl)}`,
-      content: formatMessage(messages.discoverNew),
-      onClick: (e) => {
-        exploreCoursesClick(e);
-      },
-    },
+//{
+//  type: 'item',
+//  href: '#',   // Evita navegación
+//  content: 'Mensaje personalizado de notificación',
+//  onClick: (e) => {
+//    e.preventDefault();
+ //   if (window.openCustomDashboardModal) {
+ //     window.openCustomDashboardModal(); 
+ //   }
+//  },
+//},
+
+//    {
+  //   type: 'item',
+  //    href: `${urls.baseAppUrl(courseSearchUrl)}`,
+   //   content: formatMessage(messages.discoverNew),
+   //   onClick: (e) => {
+   //     exploreCoursesClick(e);
+   //   },
+   // },
   ],
   secondaryMenu: [
     ...(getConfig().SUPPORT_URL ? [{
