@@ -4,6 +4,8 @@ import urls from 'data/services/lms/urls';
 
 import messages from './messages';
 
+import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
+
 const getLearnerHeaderMenu = (
   formatMessage,
   courseSearchUrl,
@@ -11,9 +13,15 @@ const getLearnerHeaderMenu = (
   exploreCoursesClick,
 ) => {
 
+  const user = getAuthenticatedUser();
+
   const isStaffOrSuperUser =
-  authenticatedUser?.roles?.includes('staff') ||
-  authenticatedUser?.roles?.includes('superuser');
+    user?.administrator === true ||
+    user?.is_staff === true ||
+    user?.is_superuser === true;
+    
+console.log('AUTH USER FROM PLATFORM', getAuthenticatedUser());
+console.log('AUTH USER PARAM', authenticatedUser);
 
 return {
   mainMenu: [
