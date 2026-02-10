@@ -4,17 +4,18 @@ import urls from 'data/services/lms/urls';
 
 import messages from './messages';
 
-const isStaffOrSuperUser =
-  authenticatedUser?.roles?.includes('staff') ||
-  authenticatedUser?.roles?.includes('superuser');
-
-
 const getLearnerHeaderMenu = (
   formatMessage,
   courseSearchUrl,
   authenticatedUser,
   exploreCoursesClick,
-) => ({
+) => {
+
+  const isStaffOrSuperUser =
+  authenticatedUser?.roles?.includes('staff') ||
+  authenticatedUser?.roles?.includes('superuser');
+
+return {
   mainMenu: [
     {
       type: 'item',
@@ -102,7 +103,7 @@ const getLearnerHeaderMenu = (
       ],
     },
   ],
-}
-);
+};
+};
 
 export default getLearnerHeaderMenu;
