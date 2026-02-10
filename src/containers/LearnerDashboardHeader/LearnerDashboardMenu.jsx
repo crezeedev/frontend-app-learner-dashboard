@@ -19,7 +19,7 @@ const getLearnerHeaderMenu = (
     user?.administrator === true ||
     user?.is_staff === true ||
     user?.is_superuser === true;
-    
+
 console.log('AUTH USER FROM PLATFORM', getAuthenticatedUser());
 console.log('AUTH USER PARAM', authenticatedUser);
 
@@ -82,7 +82,7 @@ return {
         ...(isStaffOrSuperUser ? [
           {
             type: 'item',
-            href: '/admin',
+            href: `${getConfig().LMS_BASE_URL}/admin`,
             target: '_blank',
             content: 'Panel Administrador',
           },
