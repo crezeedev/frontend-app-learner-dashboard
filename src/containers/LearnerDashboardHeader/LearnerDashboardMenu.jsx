@@ -4,6 +4,11 @@ import urls from 'data/services/lms/urls';
 
 import messages from './messages';
 
+const isStaffOrSuperUser =
+  authenticatedUser?.roles?.includes('staff') ||
+  authenticatedUser?.roles?.includes('superuser');
+
+
 const getLearnerHeaderMenu = (
   formatMessage,
   courseSearchUrl,
@@ -64,6 +69,21 @@ const getLearnerHeaderMenu = (
           href: `${getConfig().ACCOUNT_SETTINGS_URL}`,
           content: formatMessage(messages.account),
         },
+        //botones en combo solo si es staff o superusuario
+        ...(isStaffOrSuperUser ? [
+          {
+            type: 'item',
+            href: '/admin',
+            target: '_blank',
+            content: 'Panel Administrador',
+          },
+          {
+            type: 'item',
+            href: getConfig().STUDIO_BASE_URL || '/studio',
+            target: '_blank',
+            content: 'Ir a Studio',
+          },
+        ] : []),
         ...(getConfig().ORDER_HISTORY_URL ? [{
           type: 'item',
           href: getConfig().ORDER_HISTORY_URL,
