@@ -39,5 +39,48 @@
   });
 })();
 </script>
+<!-- powered by -->
+<script>
+(function () {
+
+  function customizeFooterLogos() {
+
+    // Cambiar texto "Powered by"
+    const poweredByItems = document.querySelectorAll('.logo-list li');
+
+    poweredByItems.forEach(li => {
+      if (li.textContent.trim() === "Powered by") {
+        li.textContent = "Desarrollado por";
+      }
+    });
+
+    // Cambiar logo de Open edX por logo-crezee.png
+    const logos = document.querySelectorAll('.logo-list img');
+
+    logos.forEach(img => {
+      if (img.src.includes("tutor-logo")) {
+        img.src = "https://onlinelive.universidadriviera.edu.mx/theming/asset/images/logo-crezee.png";
+        img.alt = "Crezee";
+        img.width = 120;
+      }
+    });
+
+  }
+
+  // Ejecutar después de cargar
+  setTimeout(customizeFooterLogos, 800);
+
+  // Observar cambios (porque es React/MFE)
+  const observer = new MutationObserver(() => {
+    customizeFooterLogos();
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+
+})();
+</script>
 
 </html>
