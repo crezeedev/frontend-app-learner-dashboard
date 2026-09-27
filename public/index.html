@@ -7,4 +7,78 @@
   <body>
     <div id="root"></div>
   </body>
+<script>
+(function () {
+  function translateAndClean() {
+
+    // 2. Traducir Copyrights con una técnica de reemplazo total
+    const copyright = document.querySelector('.copyright-site');
+    if (copyright && copyright.textContent.includes('All Rights Reserved')) {
+      // Usamos innerHTML para forzar el cambio y reemplazamos las dos partes
+      let text = copyright.innerHTML;
+      text = text.replace('Copyrights', 'Derechos de autor');
+      text = text.replace('All Rights Reserved', 'Todos los derechos reservados');
+      copyright.innerHTML = text;
+    }
+  }
+
+  // Ejecución inicial con un pequeño retraso para asegurar que el footer cargó
+  setTimeout(translateAndClean, 500);
+
+  // Observador para cambios del DOM
+  const observer = new MutationObserver((mutations) => {
+    // Solo ejecutamos si hay cambios reales para evitar bucles infinitos
+    translateAndClean();
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+})();
+</script>
+<!-- powered by -->
+<script>
+(function () {
+
+  function customizeFooterLogos() {
+
+    // Cambiar texto "Powered by"
+    const poweredByItems = document.querySelectorAll('.logo-list li');
+
+    poweredByItems.forEach(li => {
+      if (li.textContent.trim() === "Powered by") {
+        li.textContent = "Desarrollado por";
+      }
+    });
+
+    // Cambiar logo de Open edX por logo-crezee.png
+    const logos = document.querySelectorAll('.logo-list img');
+
+    logos.forEach(img => {
+      if (img.src.includes("tutor-logo")) {
+        img.src = "https://openedx21.plenumsoftamericas.com/theming/asset/images/logo-crezee.png";
+        img.alt = "Crezee";
+        img.width = 120;
+      }
+    });
+
+  }
+
+  // Ejecutar después de cargar
+  setTimeout(customizeFooterLogos, 800);
+
+  // Observar cambios (porque es React/MFE)
+  const observer = new MutationObserver(() => {
+    customizeFooterLogos();
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+
+})();
+</script>
+
 </html>
