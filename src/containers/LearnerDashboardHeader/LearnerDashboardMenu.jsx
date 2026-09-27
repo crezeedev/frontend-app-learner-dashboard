@@ -4,12 +4,26 @@ import urls from 'data/services/lms/urls';
 
 import messages from './messages';
 
+import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
+
 const getLearnerHeaderMenu = (
   formatMessage,
   courseSearchUrl,
   authenticatedUser,
   exploreCoursesClick,
-) => ({
+) => {
+
+  const user = getAuthenticatedUser();
+
+  const isStaffOrSuperUser =
+    user?.administrator === true ||
+    user?.is_staff === true ||
+    user?.is_superuser === true;
+
+console.log('AUTH USER FROM PLATFORM', getAuthenticatedUser());
+console.log('AUTH USER PARAM', authenticatedUser);
+
+return {
   mainMenu: [
     {
       type: 'item',
@@ -17,20 +31,31 @@ const getLearnerHeaderMenu = (
       content: formatMessage(messages.course),
       isActive: true,
     },
-    /*...(getConfig().ENABLE_PROGRAMS ? [{
+    ...(getConfig().ENABLE_PROGRAMS ? [{
       type: 'item',
       href: `${urls.programsUrl()}`,
       content: formatMessage(messages.program),
     }] : []),
-    ...(!getConfig().NON_BROWSABLE_COURSES ? [{
-      type: 'item',
-      href: `${urls.baseAppUrl(courseSearchUrl)}`,
-      content: formatMessage(messages.discoverNew),
-      onClick: (e) => {
-        exploreCoursesClick(e);
-      },
-    }]
-      : []),*/
+//{
+//  type: 'item',
+//  href: '#',   // Evita navegación
+//  content: 'Mensaje personalizado de notificación',
+//  onClick: (e) => {
+//    e.preventDefault();
+ //   if (window.openCustomDashboardModal) {
+ //     window.openCustomDashboardModal(); 
+ //   }
+//  },
+//},
+
+//    {
+  //   type: 'item',
+  //    href: `${urls.baseAppUrl(courseSearchUrl)}`,
+   //   content: formatMessage(messages.discoverNew),
+   //   onClick: (e) => {
+   //     exploreCoursesClick(e);
+   //   },
+   // },
   ],
   secondaryMenu: [
     ...(getConfig().SUPPORT_URL ? [{
@@ -53,6 +78,21 @@ const getLearnerHeaderMenu = (
           href: `${getConfig().ACCOUNT_SETTINGS_URL}`,
           content: formatMessage(messages.account),
         },
+        //botones en combo solo si es staff o superusuario
+        ...(isStaffOrSuperUser ? [
+          {
+            type: 'item',
+            href: `${getConfig().LMS_BASE_URL}/admin`,
+            target: '_blank',
+            content: 'Panel Administrador',
+          },
+          {
+            type: 'item',
+            href: getConfig().STUDIO_BASE_URL || '/studio',
+            target: '_blank',
+            content: 'Ir a Studio',
+          },
+        ] : []),
         ...(getConfig().ORDER_HISTORY_URL ? [{
           type: 'item',
           href: getConfig().ORDER_HISTORY_URL,
@@ -71,7 +111,7 @@ const getLearnerHeaderMenu = (
       ],
     },
   ],
-}
-);
+};
+};
 
 export default getLearnerHeaderMenu;
